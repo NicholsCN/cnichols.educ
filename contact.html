@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Dr. Constance Nichols</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFDF9;
+    --brown-light: #C9A882;
+    --brown-pale: #EDE0CC;
+    --slate-pale: #EBF0F5;
+    --slate-dark: #4A6070;
+    --gold: #B8922E;
+    --gold-light: #DFC07A;
+    --text-dark: #2A1C10;
+    --text-mid: #5A3E28;
+    --text-muted: #8A7060;
+    --border: rgba(155,110,70,0.15);
+    --slate-border: rgba(74,96,112,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(250,247,242,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.74rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+
+  .contact-wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 5rem 5rem;
+    background: var(--warm-white);
+    text-align: center;
+  }
+
+  .contact-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+  }
+
+  .contact-eyebrow::before,
+  .contact-eyebrow::after {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .contact-intro {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.85;
+    max-width: 52ch;
+    margin: 0 auto 3rem;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 0.25rem;
+    transition: color 0.2s, border-color 0.2s;
+    margin-bottom: 3rem;
+  }
+
+  .contact-email:hover {
+    color: var(--gold);
+  }
+
+  .contact-areas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .contact-area {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.35rem 0.85rem;
+  }
+
+  .gold-footer-line {
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+  }
+
+  footer {
+    background: #4A6070;
+    color: rgba(250,247,242,0.5);
+    padding: 2rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(250,247,242,0.75);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" style="font-family:'Cormorant Garamond',serif; font-size:0.7rem; font-weight:400; color:#C9A882; letter-spacing:0.12em; text-decoration:none;">CN</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects &amp; Initiatives</a></li>
+    <li><a href="pedagogy.html">Pedagogy</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="contact-wrap">
+  <p class="contact-eyebrow">Contact</p>
+  <h1 class="contact-title">Contact</h1>
+  <p class="contact-intro">Please feel welcome to reach out to explore collaborating and working with me.</p>
+  <a href="/cdn-cgi/l/email-protection#81e2efe8e2e9eeedf2afe4e5f4e2c1e6ece0e8edafe2eeec" class="contact-email"><span class="__cf_email__" data-cfemail=

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programs — Dr. Constance Nichols</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFDF9;
+    --brown-light: #C9A882;
+    --brown-pale: #EDE0CC;
+    --slate-light: #C2CDD9;
+    --slate-pale: #EBF0F5;
+    --slate-dark: #4A6070;
+    --slate-mid: #6A8599;
+    --gold: #B8922E;
+    --gold-light: #DFC07A;
+    --text-dark: #2A1C10;
+    --text-mid: #5A3E28;
+    --text-muted: #8A7060;
+    --border: rgba(155,110,70,0.15);
+    --slate-border: rgba(74,96,112,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(250,247,242,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.74rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 8rem 5rem 3.5rem;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .page-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.1;
+  }
+
+  /* SPHERE CIRCLES NAV */
+  .spheres {
+    padding: 3rem 5rem 0;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .sphere {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+  }
+
+  .sphere-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .sphere-circle.global {
+    background: var(--slate-pale);
+    color: var(--slate-dark);
+    border-color: var(--slate-border);
+  }
+
+  .sphere-circle.regional {
+    background: var(--brown-pale);
+    color: var(--text-mid);
+    border-color: rgba(155,110,70,0.25);
+  }
+
+  .sphere-circle.institutional {
+    background: var(--gold-light);
+    color: var(--text-mid);
+    border-color: rgba(184,146,46,0.3);
+    opacity: 0.75;
+  }
+
+  .sphere-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* SECTION BLOCKS */
+  .section-block {
+    padding: 3.5rem 5rem 0;
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-divider-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .circle-global {
+    background: var(--slate-pale);
+    color: var(--slate-dark);
+    border: 1px solid var(--slate-border);
+  }
+
+  .circle-regional {
+    background: var(--brown-pale);
+    color: var(--text-mid);
+    border: 1px solid rgba(155,110,70,0.25);
+  }
+
+  .circle-institutional {
+    background: var(--gold-light);
+    color: var(--text-mid);
+    border: 1px solid rgba(184,146,46,0.3);
+    opacity: 0.8;
+  }
+
+  .section-divider-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    white-space: nowrap;
+  }
+
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* PROGRAM CARDS */
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    padding-bottom: 1rem;
+  }
+
+  .program-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 2rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .program-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .program-card:hover::before { transform: scaleX(1); }
+  .program-card:hover { transform: translateY(-3px); }
+
+  .program-card.slate {
+    background: var(--slate-pale);
+    border-color: var(--slate-border);
+  }
+
+  .program-card.slate::before { background: var(--slate-mid); }
+
+  .program-card.warm {
+    background: var(--brown-pale);
+    border-color: rgba(155,110,70,0.2);
+  }
+
+  .program-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+
+  .program-card.slate .program-label { color: var(--slate-mid); }
+
+  .program-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .program-body {
+    font-size: 0.86rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* PHOTO PLACEHOLDER */
+  .photo-placeholder {
+    background: var(--brown-pale);
+    border: 1px dashed var(--brown-light);
+    border-radius: 3px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .photo-placeholder-text {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brown-light);
+  }
+
+  .photo-placeholder.slate-ph {
+    background: var(--slate-pale);
+    border-color: var(--slate-light);
+  }
+
+  .photo-placeholder.slate-ph .photo-placeholder-text { color: var(--slate-light); }
+
+  /* FULL WIDTH CARD */
+  .program-card-full {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 2rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+    margin-bottom: 1.25rem;
+  }
+
+  .program-card-full::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .program-card-full:hover::before { transform: scaleX(1); }
+  .program-card-full:hover { transform: translateY(-3px); }
+
+  /* FOOTER */
+  .gold-footer-line {
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin-top: 5rem;
+  }
+
+  footer {
+    background: #4A6070;
+    color: rgba(250,247,242,0.5);
+    padding: 2rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(250,247,242,0.75);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" style="font-family:'Cormorant Garamond',serif; font-size:0.7rem; font-weight:400; color:#C9A882; letter-spacing:0.12em; text-decoration:none;">CN</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects &amp; Initiatives</a></li>
+    <li><a href="pedagogy.html">Pedagogy</a></li>
+    <li><a href="programs.html" class="active">Programs</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <p class="page-eyebrow">Programs</p>
+  <h1 class="page-title">Programs</h1>
+</div>
+
+<!-- SPHERE INDICATORS -->
+<div class="spheres">
+  <div class="sphere">
+    <div class="sphere-circle global">GL</div>
+    <span class="sphere-label">Global</span>
+  </div>
+  <div class="sphere">
+    <div class="sphere-circle regional">RE</div>
+    <span class="sphere-label">Regional</span>
+  </div>
+  <div class="sphere">
+    <div class="sphere-circle institutional">IN</div>
+    <span class="sphere-label">Institutional</span>
+  </div>
+</div>
+
+<!-- GLOBAL -->
+<div class="section-block">
+  <div class="section-divider">
+    <div class="section-divider-circle circle-global">GL</div>
+    <span class="section-divider-text">Global</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="photo-placeholder slate-ph" style="height:160px;">
+    <span class="photo-placeholder-text">Photo — Harvard cohort · add yours here</span>
+  </div>
+
+  <div class="programs-grid">
+
+    <div class="program-card slate">
+      <p class="program-label">Leadership Development · 2024</p>
+      <h2 class="program-title">Harvard Graduate School of Education — Women in Education Leadership Cohort</h2>
+      <p class="program-body">Selected for a competitive cohort program at the Harvard Graduate School of Education, focused on leadership development in education. The program brought together education leaders for intensive workshops, seminars, and dialogue on trends, challenges, and best practices in higher education leadership.</p>
+    </div>
+
+    <div class="program-card slate">
+      <p class="program-label">Curriculum Development</p>
+      <h2 class="program-title">Strickland Global Leadership Institute — Curriculum &amp; Training</h2>
+      <p class="program-body">Working with SGLI to develop curriculum and training materials for center founders and directors across the global network — supporting the next generation of leaders building vocational training and arts education centers grounded in Bill Strickland's model.</p>
+    </div>
+
+    <div class="program-card slate">
+      <p class="program-label">Research</p>
+      <h2 class="program-title">Strickland Global Leadership Institute — Founder &amp; Director Profiles</h2>
+      <p class="program-body">Contributing to a study of founder and center director profiles across the SGLI network — building knowledge about who leads these centers, what shapes their leadership, and what the network can learn from their collective experience.</p>
+    </div>
+
+    <div class="program-card slate">
+      <p class="program-label">Best Practices</p>
+      <h2 class="program-title">Strickland Global Leadership Institute — Artist Residencies</h2>
+      <p class="program-body">Working with SGLI to develop best practices in artist residencies across the network — exploring how arts programming can be structured, sustained, and deepened within vocational training and community enrichment centers.</p>
+    </div>
+
+    <div class="program-card slate">
+      <p class="program-label">Educational Access</p>
+      <h2 class="program-title">Strickland Global Leadership Institute — Educational Access</h2>
+      <p class="program-body">Exploring potential funding initiatives in partnership with SGLI aimed at expanding educational access and opportunity for the learners served by centers across the network.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- REGIONAL -->
+<div class="section-block" style="padding-top: 3rem;">
+  <div class="section-divider">
+    <div class="section-divider-circle circle-regional">RE</div>
+    <span class="section-divider-text">Regional</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="photo-placeholder" style="height:160px;">
+    <span class="photo-placeholder-text">Photo — school board or LUMA work · add yours here</span>
+  </div>
+
+  <div class="programs-grid">
+
+    <div class="program-card warm">
+      <p class="program-label">Elected Service · 2017–Present</p>
+      <h2 class="program-title">Grove City Area School District — Board of Directors</h2>
+      <p class="program-body">Serving as an elected school board member, with roles including Board President and current service as Educational Services Chair. Board work has included curriculum development, contract negotiations with collective bargaining units, school safety, community engagement, early childhood care initiatives, and a collaborative response to the challenges of the COVID-19 pandemic.</p>
+    </div>
+
+    <div class="program-card warm">
+      <p class="program-label">Design Training</p>
+      <h2 class="program-title">LUMA Human-Centered Design</h2>
+      <p class="program-body">Completed LUMA Human-Centered Design training and applied design thinking principles to improve educational outcomes with strategic partners in the Grove City Area School District region — with a particular focus on convening community organizations to work through complex educational challenges together.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- INSTITUTIONAL -->
+<div class="section-block" style="padding-top: 3rem;">
+  <div class="section-divider">
+    <div class="section-divider-circle circle-institutional">IN</div>
+    <span class="section-divider-text">Institutional</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="photo-placeholder" style="height:160px;">
+    <span class="photo-placeholder-text">Photo — program work · add yours here</span>
+  </div>
+
+  <div class="programs-grid">
+
+    <div class="program-card">
+      <p class="program-label">Graduate Program</p>
+      <h2 class="program-title">Graduate Reading Specialist Program</h2>
+      <p class="program-body">Developed in partnership with key faculty members — including the full curriculum, program architecture, and all coursework and syllabi. An asynchronous program grounded in the science of reading, designed for educators pursuing reading specialist certification or seeking deeper understanding of reading pedagogy and systems for supporting struggling readers.</p>
+    </div>
+
+    <div class="program-card">
+      <p class="program-label">Advising Model</p>
+      <h2 class="program-title">Four Plus One Advising Model</h2>
+      <p class="program-body">A cohort-based advising framework supporting preservice teachers across all four years of their preparation program and into their first year in the classroom — building sustained mentoring relationships that extend well beyond graduation.</p>
+    </div>
+
+    <div class="program-card">
+      <p class="program-label">Career Services</p>
+      <h2 class="program-title">Education Career Services Office</h2>
+      <p class="program-body">Established a specialized office for career services focused exclusively on the short and long term career needs of education majors — creating dedicated support and resources for students navigating the teaching profession from their first year through placement and beyond.</p>
+    </div>
+
+    <div class="program-card">
+      <p class="program-label">Program Growth</p>
+      <h2 class="program-title">Departmental Program Expansion</h2>
+      <p class="program-body">Over more than two decades of departmental leadership, the Education Department grew from 12 distinct undergraduate majors to over 30 distinct academic programs — including undergraduate majors, post-baccalaureate and intern certifications, endorsement programs, graduate pathways, and the Reading Specialist Masters Program.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="gold-footer-line"></div>
+<footer>
+  <span class="footer-name">Dr. Constance Nichols</span>
+  <span>© 2025 · Grove City, Pennsylvania</span>
+</footer>
+
+</body>
+</html>

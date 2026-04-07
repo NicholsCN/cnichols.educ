@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedagogy — Dr. Constance Nichols</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFDF9;
+    --brown-light: #C9A882;
+    --brown-pale: #EDE0CC;
+    --slate-light: #C2CDD9;
+    --slate-pale: #EBF0F5;
+    --slate-dark: #4A6070;
+    --slate-mid: #6A8599;
+    --gold: #B8922E;
+    --gold-light: #DFC07A;
+    --text-dark: #2A1C10;
+    --text-mid: #5A3E28;
+    --text-muted: #8A7060;
+    --border: rgba(155,110,70,0.15);
+    --slate-border: rgba(74,96,112,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(250,247,242,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.74rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+
+  .page-header {
+    padding: 8rem 5rem 3.5rem;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .page-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.1;
+  }
+
+  /* PHILOSOPHY */
+  .philosophy {
+    padding: 4rem 5rem;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .philosophy-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+  }
+
+  .philosophy-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.2;
+  }
+
+  .philosophy-body {
+    font-size: 0.93rem;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.95;
+  }
+
+  .philosophy-body p + p { margin-top: 1rem; }
+
+  /* SECTION BLOCKS */
+  .section-block {
+    padding: 3.5rem 5rem 0;
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-divider-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    white-space: nowrap;
+  }
+
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* PRACTICE CARDS */
+  .practices-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    padding-bottom: 1rem;
+  }
+
+  .practice-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .practice-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .practice-card:hover::before { transform: scaleX(1); }
+  .practice-card:hover { transform: translateY(-3px); }
+
+  .practice-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+
+  .practice-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 0.7rem;
+    line-height: 1.25;
+  }
+
+  .practice-body {
+    font-size: 0.84rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* STUDENT PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    padding-bottom: 1rem;
+  }
+
+  .project-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 2rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card:hover { background: var(--warm-white); transform: translateY(-3px); }
+
+  .project-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 0.7rem;
+    line-height: 1.2;
+  }
+
+  .project-body {
+    font-size: 0.84rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-researchers {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 0.03em;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* CONFERENCE TRAVEL — FULL WIDTH SLATE CARD */
+  .conference-block {
+    margin: 3.5rem 5rem 0;
+    background: var(--slate-pale);
+    border: 1px solid var(--slate-border);
+    border-radius: 3px;
+    padding: 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .conference-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--slate-dark);
+    line-height: 1;
+  }
+
+  .conference-number span {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--slate-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    margin-top: 0.35rem;
+  }
+
+  .conference-body {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.85;
+  }
+
+  .conference-venues {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .conference-venue {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate-dark);
+    background: white;
+    border: 1px solid var(--slate-border);
+    border-radius: 2px;
+    padding: 0.35rem 0.85rem;
+  }
+
+  /* STUDENT ORGS */
+  .orgs-block {
+    padding: 3.5rem 5rem 5rem;
+  }
+
+  .orgs-list {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .org-item {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.25rem 1.75rem;
+    font-size: 0.86rem;
+    font-weight: 300;
+    color: var(--text-mid);
+    transition: background 0.2s;
+  }
+
+  .org-item:hover { background: var(--brown-pale); }
+
+  .gold-footer-line {
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin-top: 5rem;
+  }
+
+  footer {
+    background: #4A6070;
+    color: rgba(250,247,242,0.5);
+    padding: 2rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(250,247,242,0.75);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" style="font-family:'Cormorant Garamond',serif; font-size:0.7rem; font-weight:400; color:#C9A882; letter-spacing:0.12em; text-decoration:none;">CN</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects &amp; Initiatives</a></li>
+    <li><a href="pedagogy.html" class="active">Pedagogy</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <p class="page-eyebrow">Pedagogy</p>
+  <h1 class="page-title">Pedagogy</h1>
+</div>
+
+<!-- TEACHING PHILOSOPHY -->
+<div class="philosophy">
+  <div>
+    <p class="philosophy-label">Teaching Philosophy</p>
+  </div>
+  <div class="philosophy-body">
+    <p style="font-style:italic; color: var(--text-muted); font-size:0.88rem; margin-bottom: 2rem; line-height:1.9;">
+      "The classroom remains the most radical space of possibility in the academy"<br>
+      <span style="font-style:normal;">— bell hooks, <em>Teaching to Transgress: Education as the Practice of Freedom</em></span>
+    </p>
+    <p style="font-style:italic; color: var(--text-muted); font-size:0.88rem; margin-bottom: 2rem; line-height:1.9;">
+      "When I return to the classroom and see children's eyes holding wonder like a cup, then I know why I teach."<br>
+      <span style="font-style:normal;">— Marva Collins, <em>Why I Teach</em>, Unpublished Essay</span>
+    </p>
+    <p style="font-style:italic; color: var(--text-muted); font-size:0.88rem; margin-bottom: 2rem; line-height:1.9;">
+      "I teach kindergarten, and it is the most intellectually challenging thing I have ever done. We don't put red and purple on the easel to teach that it makes purple. We do it because we are helping a child discover that they can change the world through their own actions, they can create something new and beautiful."<br>
+      <span style="font-style:normal;">— Bill Ayers, Remarks at the American Association of Teacher Educators</span>
+    </p>
+    <p style="font-style:italic; color: var(--text-muted); font-size:0.88rem; margin-bottom: 2.5rem; line-height:1.9;">
+      "I don't wait. My big thing is why wait for superman when all teachers have capes in the closet?... When I'm thinking of education, I'm thinking of being a life-changer. I think of impact; I'm trying to be the most impactful educator in the country. Anybody could get kids to score well on the test, but will you be remembered when they leave your classroom?"<br>
+      <span style="font-style:normal;">— Eric Hale, Texas Teacher of the Year, Remarks as a guest speaker in my classroom</span>
+    </p>
+    <p>In a statement articulating my teaching philosophy, I believe it is fitting to include important quotes from other educators. I reflect on these statements repeatedly in my work, touchstones that help orient my view and inspire my practice. In our profession we do more than stand on the shoulders of giants, we push forward through the energy of educators who have removed boundaries and redefined narrow limits of human potential. To be an educator is to be part of the collective commitment to leverage the highest quality of our craft to both impact the individual, and indeed to move entire systems. We are meant to rest comfortably in the territory of the now. To teach is to make a radical investment in a future yet seen.</p>
+    <p>To teach is to take every aspect of your intellectual, intrapersonal, and creative self and bring it to bear to invest in another. It is a pouring out of your gifts, all for the expectation that you will develop the gifts in another. And indeed, I believe in thinking of teaching as a "practice", for just as a musician or artist is in a constant state of development of their skills, we must be as well. In our efforts as educators, we never really "arrive" no matter what feedback we receive on the quality of our work. For if we have done our job well and succeeded in helping another learn, we must begin all over again… After all, if we are successful in bringing an individual to a new level of understanding, we must rediscover that individual all over again, and if that student moves on from our work and continues on their journey, we have a responsibility to let their success light the way for those we are fortunate enough to work with next. It is generational work, iterative, and simultaneously the most thrilling and daunting of endeavors.</p>
+    <p>Teaching is a radical act of hope. Even more audacious is the act of teaching teachers, for the impact is legion. If the goal of the academy is to transfer knowledge, credential knowledge, and create knowledge, then when teaching teachers, one must be hyper conscious of not only WHAT our students are learning from us, but HOW they are learning. For the very method, atmosphere, community, and possibility you cultivate is like a wave that moves forward for generations yet to come. I believe my course design, my assignments, my delivery, and my engagement carries forward into their practice. I seek to credential their skills through the standards of best practices, I seek to impact their own practice through a commitment to transferring pedagogical excellence and deep engagement, and I seek to create within them and through them a better world through their ability to bring their own craft into the communities and students they will serve.</p>
+    <p>I have endeavored to move forward through the collective energy of my educational giants, some of whom I am fortunate enough to know, some of whom I have even been fortunate to teach. I need to keep moving, as I have more energy and the opportunity for impact is irresistible.</p>
+    <p>Having opened with quotes, I hope you will indulge me in sharing a small moment that carries a large truth. Every now and then you get to see that moment where opportunity and engagement meet, and something wholly new is created in the application of understanding of a student, and in that moment you learn too. This summer I was working with a political science major who plans on studying education systems in their future graduate work. The student had been serving as an intern with me for the summer as we engaged in a deep study of community college access in Pennsylvania and looked at alternative models for affordable education options. As part of that work we interviewed Bill Strickland, an incredibly impactful individual I am fortunate to work with in my broader network. Bill has a gift for making people feel seen and valued, and as the interview progressed, I was in deep concentration, trying to do my part to ask just enough questions, leaving room and gently leading my student intern to a place where they could be comfortable engaging more deeply on their own.</p>
+    <p>Over time my student gathered their courage and began to ask more in-depth questions and finally opened up about the core of why they were so interested in learning from this educational leader. "Mr. Strickland, what do you do when people stand in your way, and they won't change their perspective on what you are trying to do?"</p>
+    <p>Bill just shrugged and said, "Man, I just keep moving. I don't have time for them. I got to go, I only have one life, and I don't have time for them to figure it out. I just keep moving."</p>
+    <p>While the exchange was powerful, the bigger moment came after the call — after the scope of the conversation in totality had time to rest and resonate. "You know," my student shared, "I realize something about what Mr. Strickland said. If you just get on with the work and go, and move around the people who are standing in your way, they have no choice but to change their perspective, because as you move around them, they have to pivot to see where you have gone — and they not only see you, they see others with you. They literally have had to turn, to change their view — to see a new perspective that wasn't there before. That's how you make lasting change, not just for those you serve, but also for those that stood in the way."</p>
+    <p>I teach because I believe the classroom remains an audacious space of possibility and hope, and where human potential is the dividend of exceptional practice. I teach to keep moving myself, and others into the real realm of possibility, and in so doing move the wider world around us.</p>
+  </div>
+</div>
+
+<!-- PEDAGOGICAL PRACTICES -->
+<div class="section-block">
+  <div class="section-divider">
+    <span class="section-divider-text">Pedagogical Approach</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="practices-grid">
+
+    <div class="practice-card">
+      <p class="practice-label">Field-Embedded Work</p>
+      <p class="practice-body">Meaningful partnerships with schools, agencies, and community organizations are woven into my courses at every level, from undergraduate methods courses to graduate seminars. My students work alongside incredible educators and community organizations. I am fortunate to have a wide network of amazing teachers and leaders that come alongside me and help my students grow.</p>
+    </div>
+
+    <div class="practice-card">
+      <p class="practice-label">Honoring Student Agency and Choice</p>
+      <p class="practice-body">I believe deeply in honoring student agency and choice. Doing so honors who students are and how they relate to one another. Choice and agency applied towards common goals and strong expectations for their growth create a culture where individual students see themselves as capable, and see one another's unique contributions as valued. In such environments different approaches to learning are seen as assets that deepen everyone's growth, where diversity of thought and experience enriches everyone.</p>
+    </div>
+
+  </div>
+
+<!-- STUDENT-LED PROJECTS -->
+<div class="section-block" style="padding-top: 3rem;">
+  <div class="section-divider">
+    <span class="section-divider-text">Student-Led Projects &amp; Undergraduate Research</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <p class="project-label">Undergraduate Research · Multi-Year Initiative</p>
+      <h3 class="project-title">The Genius Corps</h3>
+      <p class="project-body">Originated by an undergraduate student during her sophomore year, the Genius Corps brought preservice teachers and STEM professors together to design accessible, inquiry-based science labs for middle school students. Half of the student participants were from the intellectually disabled community, and all were collaborators. The name was intentional: how do we find the genius in everyone? The initiative ran for three years with strong community and family engagement, and was presented at the 2025 PAC-TE Educator Assembly.</p>
+      <p class="project-researchers">Undergraduate researcher: Becky (Krupp) Toney</p>
+    </div>
+
+    <div class="project-card">
+      <p class="project-label">Undergraduate Research · Community Partnership</p>
+      <h3 class="project-title">Books for Hope Project</h3>
+      <p class="project-body">An initiative connecting students with educational disruptions to therapeutic, high-quality literature to foster resilience and bridge the gap between outside-school placements and literacy. The team gathered over 5,000 books, partnered with five agencies, and placed mini portable libraries focused on social-emotional learning in locations from Pittsburgh to Erie. Concept to reality in four months. Presented at the National Conference on Undergraduate Research, Pittsburgh, 2025.</p>
+      <p class="project-researchers">Undergraduate researchers: Allie Thomas, Ashley Beauchamp, Celia Dobransky, Brady Brungard</p>
+    </div>
+
+    <div class="project-card">
+      <p class="project-label">Undergraduate Research · 501(c) Initiative</p>
+      <h3 class="project-title">Next Up Sports</h3>
+      <p class="project-body">Designed to eliminate financial barriers to youth sports participation, Next Up Sports established a 501(c) through the Community Foundation of Western Pennsylvania and Eastern Ohio, raised over $1,000, and distributed over 20 scholarships for students from poverty to participate in community sports programs. Networked with the entrepreneurship program, established a shared vision with community stakeholders, and moved from concept to 501(c) in 3.5 months. Presented at the National Conference on Undergraduate Research, Pittsburgh, 2025.</p>
+      <p class="project-researchers">Undergraduate researchers: Dalton Foore, Dylan Lane</p>
+    </div>
+
+    <div class="project-card">
+      <p class="project-label">Undergraduate Research · National Conference</p>
+      <h3 class="project-title">Visual Thinking in Teacher Education</h3>
+      <p class="project-body">Drawing on Harvard Project Zero's Visible Thinking framework, this project introduced multigenre concept maps into undergraduate English Language Arts pedagogy, making student thinking and fieldwork artifacts visible and connected across an entire semester. Students mapped their teaching experiences to course units, creating a searchable record of growth that could inspire future cohorts. Co-presented at the 2025 NCTE National Conference in Denver.</p>
+      <p class="project-researchers">Undergraduate researchers: Grace Forry, Anna Plank</p>
+    </div>
+
+    <div class="project-card">
+      <p class="project-label">Student Publication · Multi-Year Project</p>
+      <h3 class="project-title">Vis Moda: The Strategies We Share</h3>
+      <p class="project-body">A student-published teaching-practice magazine dedicated to the power of shared methodology. The name comes from Latin, meaning "through the power of method," and reflects a belief that pedagogy grows through community. Contributors interpret and adapt publicly available teaching strategies through the lens of course learning, with citation, reflection, and original application. Beta Issue 1 is launching late spring 2026. An archive of over 200 strategy shares is available via Pinterest. ISSN pending. Envisioned as a multi-year, living publication.</p>
+      <p class="project-researchers">Student editors: Abigail Loiacano, Brooke McCoy, Wesley Lerew</p>
+    </div>
+
+    <div class="project-card">
+      <p class="project-label">Undergraduate Research · Internship</p>
+      <h3 class="project-title">Higher Education Access Pathways</h3>
+      <p class="project-body">A summer 2025 research project exploring access to community colleges in Pennsylvania and the process of establishing community college infrastructure, examining pathways that expand higher education access for underserved populations. Conducted as an undergraduate research internship, the project produced an internal report for a coalition of business and nonprofit leaders.</p>
+      <p class="project-researchers">Undergraduate researcher: Political Science major, Carleton College</p>
+    </div>
+
+    <div class="project-card">
+      <p class="project-label">Student-Led Design · In Progress</p>
+      <h3 class="project-title">Early Childhood Outdoor Learning Environment</h3>
+      <p class="project-body">This project provided undergraduate students with mentorship under the direction of a school partner and a landscape architect to design and implement plans for an outdoor early childhood classroom. Students moved through the full design process, from initial concept to institutional approval, and secured funding for implementation. The project brought together students from education and environmental biology, connecting disciplines around a shared purpose. Implementation is underway.</p>
+      <p class="project-researchers">Collaborative undergraduate student project</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONFERENCE TRAVEL -->
+<div class="conference-block">
+  <div>
+    <div class="conference-number">11<span>Students</span></div>
+  </div>
+  <div>
+    <p class="conference-body">Over the past eighteen months, eleven undergraduate students have attended national and global conferences, through donor funding secured specifically to support student participation. This has become a deliberate practice: taking students into the professional communities where educators gather, present, and grow.</p>
+    <div class="conference-venues">
+      <span class="conference-venue">NCTE National Conference</span>
+      <span class="conference-venue">National Conference on Undergraduate Research</span>
+      <span class="conference-venue">Strickland Global Leadership Institute</span>
+    </div>
+  </div>
+</div>
+
+<!-- STUDENT PROFESSIONAL ORGANIZATIONS -->
+<div class="orgs-block">
+  <div class="section-divider" style="margin-bottom: 2rem;">
+    <span class="section-divider-text">Student Professional Organizations</span>
+    <div class="section-divider-line"></div>
+  </div>
+  <div class="orgs-list">
+    <div class="org-item">Kappa Delta Pi International Education Honorary</div>
+    <div class="org-item">Council for Exceptional Children</div>
+    <div class="org-item">Secondary Education Society</div>
+  </div>
+</div>
+
+<div class="gold-footer-line"></div>
+<footer>
+  <span class="footer-name">Dr. Constance Nichols</span>
+  <span>&copy; 2025 &middot; Grove City, Pennsylvania</span>
+</footer>
+
+</body>
+</html>
