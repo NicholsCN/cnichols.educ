@@ -1,0 +1,1 @@
+This is a professional webpage built for Constance Nichols.   The site was built with HTML code with some assistance from AI tools such as Claude and Chat GPT.  While AI was used to format the code all of the language and the projects are authored by C. Nichols
