@@ -35,7 +35,6 @@
     line-height: 1.6;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -69,7 +68,6 @@
   .nav-links a:hover { color: var(--gold); }
   .nav-links a.active { color: var(--gold); }
 
-  /* PAGE HEADER */
   .page-header {
     padding: 8rem 5rem 3.5rem;
     background: var(--warm-white);
@@ -105,7 +103,6 @@
     line-height: 1.1;
   }
 
-  /* SPHERE CIRCLES NAV */
   .spheres {
     padding: 3rem 5rem 0;
     display: flex;
@@ -162,7 +159,6 @@
     font-weight: 400;
   }
 
-  /* SECTION BLOCKS */
   .section-block {
     padding: 3.5rem 5rem 0;
   }
@@ -222,7 +218,6 @@
     background: var(--border);
   }
 
-  /* PROGRAM CARDS */
   .programs-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -293,33 +288,6 @@
     line-height: 1.8;
   }
 
-  /* PHOTO PLACEHOLDER */
-  .photo-placeholder {
-    background: var(--brown-pale);
-    border: 1px dashed var(--brown-light);
-    border-radius: 3px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.25rem;
-  }
-
-  .photo-placeholder-text {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--brown-light);
-  }
-
-  .photo-placeholder.slate-ph {
-    background: var(--slate-pale);
-    border-color: var(--slate-light);
-  }
-
-  .photo-placeholder.slate-ph .photo-placeholder-text { color: var(--slate-light); }
-
-  /* FULL WIDTH CARD */
   .program-card-full {
     background: var(--warm-white);
     border: 1px solid var(--border);
@@ -345,7 +313,6 @@
   .program-card-full:hover::before { transform: scaleX(1); }
   .program-card-full:hover { transform: translateY(-3px); }
 
-  /* FOOTER */
   .gold-footer-line {
     height: 2px;
     background: linear-gradient(to right, var(--gold), transparent);
@@ -381,17 +348,15 @@
     <li><a href="pedagogy.html">Pedagogy</a></li>
     <li><a href="programs.html" class="active">Programs</a></li>
     <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://substack.com/@cnicholseduc" target="_blank">Substack</a></li>
+    <li><a href="https://substack.com/@cnicholseduc" target="_blank">Substack</a></li>
   </ul>
 </nav>
 
-<!-- PAGE HEADER -->
 <div class="page-header">
   <p class="page-eyebrow">Programs</p>
   <h1 class="page-title">Programs</h1>
 </div>
 
-<!-- SPHERE INDICATORS -->
 <div class="spheres">
   <div class="sphere">
     <div class="sphere-circle global">GL</div>
@@ -413,10 +378,6 @@
     <div class="section-divider-circle circle-global">GL</div>
     <span class="section-divider-text">Global</span>
     <div class="section-divider-line"></div>
-  </div>
-
-  <div class="photo-placeholder slate-ph" style="height:160px;">
-    <span class="photo-placeholder-text">Photo — Harvard cohort · add yours here</span>
   </div>
 
   <div class="programs-grid">
@@ -462,10 +423,6 @@
     <div class="section-divider-line"></div>
   </div>
 
-  <div class="photo-placeholder" style="height:160px;">
-    <span class="photo-placeholder-text">Photo — school board or LUMA work · add yours here</span>
-  </div>
-
   <div class="programs-grid">
 
     <div class="program-card warm">
@@ -489,10 +446,6 @@
     <div class="section-divider-circle circle-institutional">IN</div>
     <span class="section-divider-text">Institutional</span>
     <div class="section-divider-line"></div>
-  </div>
-
-  <div class="photo-placeholder" style="height:160px;">
-    <span class="photo-placeholder-text">Photo — program work · add yours here</span>
   </div>
 
   <div class="programs-grid">
@@ -527,7 +480,7 @@
 <div class="gold-footer-line"></div>
 <footer>
   <span class="footer-name">Dr. Constance Nichols</span>
-  <span>© 2025 · Grove City, Pennsylvania</span>
+  <span>&copy; 2025 &middot; Grove City, Pennsylvania</span>
 </footer>
 
 </body>
