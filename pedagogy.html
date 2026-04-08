@@ -103,7 +103,6 @@
     line-height: 1.1;
   }
 
-  /* PHILOSOPHY */
   .philosophy {
     padding: 4rem 5rem;
     background: var(--warm-white);
@@ -136,7 +135,6 @@
 
   .philosophy-body p + p { margin-top: 1rem; }
 
-  /* SECTION BLOCKS */
   .section-block {
     padding: 3.5rem 5rem 0;
   }
@@ -162,7 +160,6 @@
     background: var(--border);
   }
 
-  /* PRACTICE CARDS */
   .practices-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -219,7 +216,6 @@
     line-height: 1.8;
   }
 
-  /* STUDENT PROJECTS */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -286,7 +282,6 @@
     border-top: 1px solid var(--border);
   }
 
-  /* CONFERENCE TRAVEL — FULL WIDTH SLATE CARD */
   .conference-block {
     margin: 3.5rem 5rem 0;
     background: var(--slate-pale);
@@ -296,7 +291,7 @@
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 2.5rem;
-    align-items: center;
+    align-items: start;
   }
 
   .conference-number {
@@ -325,6 +320,16 @@
     line-height: 1.85;
   }
 
+  .conference-quote {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--slate-dark);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--slate-light);
+  }
+
   .conference-venues {
     display: flex;
     gap: 1.5rem;
@@ -343,7 +348,6 @@
     padding: 0.35rem 0.85rem;
   }
 
-  /* STUDENT ORGS */
   .orgs-block {
     padding: 3.5rem 5rem 5rem;
   }
@@ -402,17 +406,15 @@
     <li><a href="pedagogy.html" class="active">Pedagogy</a></li>
     <li><a href="programs.html">Programs</a></li>
     <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://substack.com/@cnicholseduc" target="_blank">Substack</a></li>
+    <li><a href="https://substack.com/@cnicholseduc" target="_blank">Substack</a></li>
   </ul>
 </nav>
 
-<!-- PAGE HEADER -->
 <div class="page-header">
   <p class="page-eyebrow">Pedagogy</p>
   <h1 class="page-title">Pedagogy</h1>
 </div>
 
-<!-- TEACHING PHILOSOPHY -->
 <div class="philosophy">
   <div>
     <p class="philosophy-label">Teaching Philosophy</p>
@@ -446,7 +448,6 @@
   </div>
 </div>
 
-<!-- PEDAGOGICAL PRACTICES -->
 <div class="section-block">
   <div class="section-divider">
     <span class="section-divider-text">Pedagogical Approach</span>
@@ -467,7 +468,6 @@
 
   </div>
 
-<!-- STUDENT-LED PROJECTS -->
 <div class="section-block" style="padding-top: 3rem;">
   <div class="section-divider">
     <span class="section-divider-text">Student-Led Projects &amp; Undergraduate Research</span>
@@ -534,7 +534,10 @@
     <div class="conference-number">11<span>Students</span></div>
   </div>
   <div>
-    <p class="conference-body">Over the past eighteen months, eleven undergraduate students have attended national and global conferences, through donor funding secured specifically to support student participation. This has become a deliberate practice: taking students into the professional communities where educators gather, present, and grow.</p>
+    <p class="conference-quote">"Thank you for being the kind of teacher that makes our dreams bigger."<br>
+    <span style="font-style:normal; font-size:0.82rem; color: var(--slate-mid);">— Second grade student, writing to a Grove City College graduate</span></p>
+    <p class="conference-body">A second grade student wrote a note to one of my graduates. It simply said those words above. I think about that quote all the time. What a wonderful joy to be the teacher of teachers who make dreams bigger.</p>
+    <p class="conference-body" style="margin-top: 0.85rem;">If I am to succeed in that important work, I want to make my own students' dreams bigger. I am fortunate to have a rich network, and I have a core value of centering my students as active participants with the programs and people I am fortunate to work with. I believe to do this well means building the full on-ramp for their participation: the purpose, the preparation, the mentorship, and the funding. For instance, in the last eighteen months eleven undergraduate students have attended national and global conferences with me as co-presenters, fully funded, and intentionally mentored by myself and those in attendance. Teaching dream builders begins in the intentional moments where students realize they already belong, and someone opens the door and invites them forward.</p>
     <div class="conference-venues">
       <span class="conference-venue">NCTE National Conference</span>
       <span class="conference-venue">National Conference on Undergraduate Research</span>
@@ -543,7 +546,6 @@
   </div>
 </div>
 
-<!-- STUDENT PROFESSIONAL ORGANIZATIONS -->
 <div class="orgs-block">
   <div class="section-divider" style="margin-bottom: 2rem;">
     <span class="section-divider-text">Student Professional Organizations</span>
